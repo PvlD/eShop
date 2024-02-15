@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\WebApp\AIOptions.cs" Link="AIOptions.cs" />
+    <Compile Include="..\WebApp\Extensions\Extensions.cs" Link="Extensions\Extensions.cs" />
+    <Compile Include="..\WebApp\Extensions\IAdapter.cs" Link="Extensions\IAdapter.cs" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Compile Include="..\WebApp\Services\**\*.cs" LinkBase="Services">
+
+    </Compile>
+
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\eShop.ServiceDefaults\eShop.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\EventBusRabbitMQ\EventBusRabbitMQ.csproj" />
+    <ProjectReference Include="..\WebAppComponents\WebAppComponents.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.AI.OpenAI" />
+    <PackageReference Include="Microsoft.Extensions.ServiceDiscovery.Yarp" />
+    <PackageReference Include="Microsoft.SemanticKernel" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
+    <PackageReference Include="Grpc.AspNetCore.Server.ClientFactory" />
+    <PackageReference Include="Grpc.Tools" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="..\Basket.API\Proto\basket.proto" GrpcServices="Client" />
+  </ItemGroup>
+
+
+</Project>

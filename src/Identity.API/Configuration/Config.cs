@@ -108,6 +108,43 @@
                 },
                 new Client
                 {
+                    ClientId = "webappf",
+                    ClientName = "WebAppF Client",
+                    ClientSecrets = new List<Secret>
+                    {
+                        new Secret("secret".Sha256())
+                    },
+                    ClientUri = $"{configuration["WebAppClientF"]}",                             // public uri of the client
+                    AllowedGrantTypes = GrantTypes.Code,
+                    AllowAccessTokensViaBrowser = false,
+                    RequireConsent = false,
+                    AllowOfflineAccess = true,
+                    AlwaysIncludeUserClaimsInIdToken = true,
+                    RequirePkce = false,
+                    RedirectUris = new List<string>
+                    {
+                        $"{configuration["WebAppClientF"]}/signin-oidc"
+                    },
+                    PostLogoutRedirectUris = new List<string>
+                    {
+                        $"{configuration["WebAppClientF"]}/signout-callback-oidc"
+                    },
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.OfflineAccess,
+                        "orders",
+                        "basket",
+                        "webshoppingagg",
+                        "webhooks"
+                    },
+                    AccessTokenLifetime = 60*60*2, // 2 hours
+                    IdentityTokenLifetime= 60*60*2 // 2 hours
+                },
+
+                new Client
+                {
                     ClientId = "webhooksclient",
                     ClientName = "Webhooks Client",
                     ClientSecrets = new List<Secret>

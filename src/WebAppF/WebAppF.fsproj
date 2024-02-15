@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HlpHtml.fs" />
+    <Content Include="Components\HeaderBar.bolero.css" />
+    <Content Include="Components\UserMenu.bolero.css" />
+    <None Include="Components\CartMenu.bolero.css" />
+    <None Include="Components\FooterBar.bolero.css" />
+    <Compile Include="Components\FooterBar.fs" />
+    <Compile Include="Components\CartMenu.fs" />
+    <Compile Include="Components\UserMenu.fs" />
+    <Compile Include="Components\HeaderBar.fs" />
+    <Content Include="Pages\Catalog\Catalog.bolero.css" />
+    <Compile Include="Pages\Pages.fs" />
+    <None Include="Pages\Item\ItemPage.bolero.css" />
+    <Compile Include="Pages\Item\ItemPage.fs" />
+    <None Include="Pages\Cart\CartPage.bolero.css" />
+    <Compile Include="Pages\Cart\CartPage.fs" />
+    <None Include="Pages\Checkout\Checkout.bolero.css" />
+    <Compile Include="Pages\Checkout\Checkout.fs" />
+    <Compile Include="Pages\Catalog\Catalog.fs" />
+    <None Include="Pages\User\Orders.bolero.css" />
+    <Compile Include="Pages\User\OrdersRefreshOnStatusChange.fs" />
+    <Compile Include="Pages\User\Orders.fs" />
+    <Compile Include="Pages\User\LogIn.fs" />
+    <Compile Include="Pages\User\LogOut.fs" />
+    <Content Include="App.bolero.css" />
+    <Compile Include="App.fs" />
+    <Compile Include="Index.fs" />
+    <Compile Include="Startup.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Bolero.Server" />
+    <PackageReference Include="Bolero.Build" />
+    <PackageReference Include="Bolero.HotReload.Server" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
+    <PackageReference Include="Microsoft.Extensions.ServiceDiscovery.Yarp" />
+
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\eShop.ServiceDefaults\eShop.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\WebAppShared\WebAppShared.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="wwwroot\icons\arrow-left.svg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\icons\cart.svg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\icons\close.svg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\icons\filters.svg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\icons\trash.svg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\icons\user.svg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

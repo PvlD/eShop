@@ -9,9 +9,9 @@ using Microsoft.SemanticKernel;
 
 public static class Extensions
 {
-    public static void AddApplicationServices(this IHostApplicationBuilder builder)
+    public static void AddApplicationServices(this IHostApplicationBuilder builder, IAdapter adapter )
     {
-        builder.AddAuthenticationServices();
+        builder.AddAuthenticationServices(adapter);
 
         builder.AddRabbitMqEventBus("EventBus")
                .AddEventBusSubscriptions();
@@ -47,7 +47,7 @@ public static class Extensions
         eventBus.AddSubscription<OrderStatusChangedToSubmittedIntegrationEvent, OrderStatusChangedToSubmittedIntegrationEventHandler>();
     }
 
-    public static void AddAuthenticationServices(this IHostApplicationBuilder builder)
+    public static void AddAuthenticationServices(this IHostApplicationBuilder builder, IAdapter adapter)
     {
         var configuration = builder.Configuration;
         var services = builder.Services;
@@ -71,7 +71,7 @@ public static class Extensions
             options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             options.Authority = identityUrl;
             options.SignedOutRedirectUri = callBackUrl;
-            options.ClientId = "webapp";
+            options.ClientId = adapter.ClientID ;
             options.ClientSecret = "secret";
             options.ResponseType = "code";
             options.SaveTokens = true;

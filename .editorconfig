@@ -130,3 +130,18 @@ csharp_preserve_single_line_blocks = true
 [*.vb]
 # Modifier preferences
 visual_basic_preferred_modifier_order = Partial,Default,Private,Protected,Public,Friend,NotOverridable,Overridable,MustOverride,Overloads,Overrides,MustInherit,NotInheritable,Static,Shared,Shadows,ReadOnly,WriteOnly,Dim,Const,WithEvents,Widening,Narrowing,Custom,Async:suggestion
+
+
+[*.{fs,fsi,fsx}]
+fsharp_space_before_uppercase_invocation = true
+fsharp_space_before_member = true
+fsharp_space_before_colon = true
+fsharp_space_before_semicolon = true
+fsharp_multiline_bracket_style = Stroustrup 
+fsharp_newline_between_type_definition_and_members = true
+fsharp_align_function_signature_to_indentation = true
+fsharp_alternative_long_member_definitions = true
+fsharp_multi_line_lambda_closing_newline = true
+fsharp_experimental_keep_indent_in_branch = true
+fsharp_bar_before_discriminated_union_declaration = true
+fsharp_experimental_elmish = true

@@ -5,8 +5,8 @@
     <AspnetVersion>8.0.0</AspnetVersion>
     <MicrosoftExtensionsVersion>8.0.0</MicrosoftExtensionsVersion>
     <EfVersion>8.0.0</EfVersion>
-    <RuntimeVersion>8.0.0</RuntimeVersion>
-    <AspireVersion>8.0.0-preview.2.23619.3</AspireVersion>
+    <RuntimeVersion>8.0.1</RuntimeVersion>
+    <AspireVersion>8.0.0-preview.3.24105.21</AspireVersion>
     <GrpcVersion>2.59.0</GrpcVersion>
   </PropertyGroup>
   <ItemGroup>
@@ -16,6 +16,7 @@
     <PackageVersion Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="$(AspireVersion)" />
     <PackageVersion Include="Aspire.RabbitMQ.Client" Version="$(AspireVersion)" />
     <PackageVersion Include="Aspire.StackExchange.Redis" Version="$(AspireVersion)" />
+    <PackageVersion Include="FSharp.Core" Version="8.0.101" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="$(AspireVersion)" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery.Yarp" Version="$(AspireVersion)" />
     <!-- Version together with ASP.NET -->
@@ -38,9 +39,11 @@
     <PackageVersion Include="Pgvector" Version="0.2.0" />
     <PackageVersion Include="Pgvector.EntityFrameworkCore" Version="0.2.0" />
     <!-- Version together with runtime -->
-    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="$(RuntimeVersion)" />
-    <PackageVersion Include="Microsoft.Extensions.Options" Version="$(RuntimeVersion)" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(RuntimeVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.0-preview.1.24080.9" />
+    <PackageVersion Include="Microsoft.Extensions.Options" Version="9.0.0-preview.1.24080.9" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0-preview.1.24080.9" />
+    
+    
     <!-- Xabaril packages -->
     <PackageVersion Include="AspNetCore.HealthChecks.Uris" Version="7.0.0" />
     <!-- AI -->
@@ -80,5 +83,15 @@
     <PackageVersion Include="xunit" Version="2.5.1" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.1" />
     <PackageVersion Include="Yarp.ReverseProxy" Version="2.1.0" />
+    <!-- Bolero  -->
+    <PackageVersion Include="Bolero" Version="0.24.25-beta" />
+    <PackageVersion Include="Bolero.Build" Version="0.24.25-beta" />
+    <PackageVersion Include="Bolero.HotReload" Version="0.22.6" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.0" />
+    <PackageVersion Include="Bolero.Server" Version="0.24.25-beta" />
+    <PackageVersion Include="Bolero.HotReload.Server" Version="0.22.6" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.1" />
   </ItemGroup>
 </Project>

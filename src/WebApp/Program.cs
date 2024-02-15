@@ -4,7 +4,8 @@ builder.AddServiceDefaults();
 
 builder.Services.AddRazorComponents().AddInteractiveServerComponents();
 
-builder.AddApplicationServices();
+
+builder.AddApplicationServices(new AppAdapter());
 
 var app = builder.Build();
 
@@ -27,5 +28,5 @@ app.UseStaticFiles();
 app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
 
 app.MapForwarder("/product-images/{id}", "http://catalog-api", "/api/v1/catalog/items/{id}/pic");
-
+ 
 app.Run();
