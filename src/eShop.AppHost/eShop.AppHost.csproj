@@ -21,6 +21,7 @@
     <ProjectReference Include="..\Ordering.API\Ordering.API.csproj" />
     <ProjectReference Include="..\OrderProcessor\OrderProcessor.csproj" />
     <ProjectReference Include="..\PaymentProcessor\PaymentProcessor.csproj" />
+    <ProjectReference Include="..\WebAppFn\WebAppFn.fsproj" />
     <ProjectReference Include="..\WebAppF\WebAppF.fsproj" />
     <ProjectReference Include="..\WebApp\WebApp.csproj" />
     

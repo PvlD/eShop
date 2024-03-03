@@ -62,6 +62,8 @@ var webApp = builder.AddProject<Projects.WebApp>("webapp")
     .WithEnvironment("IdentityUrl", identityApi.GetEndpoint("http"))
     .WithLaunchProfile("https");
 
+
+
 var webAppF = builder.AddProject<Projects.WebAppF>("webappf")
     .WithReference(basketApi)
     .WithReference(catalogApi)
@@ -70,9 +72,20 @@ var webAppF = builder.AddProject<Projects.WebAppF>("webappf")
     .WithEnvironment("IdentityUrl", identityApi.GetEndpoint("http"))
     .WithLaunchProfile("https");
 
+
+var webAppFn = builder.AddProject<Projects.WebAppFn>("webappfn")
+    .WithReference(basketApi)
+    .WithReference(catalogApi)
+    .WithReference(orderingApi)
+    .WithReference(rabbitMq)
+    .WithEnvironment("IdentityUrl", identityApi.GetEndpoint("http"))
+    .WithLaunchProfile("https");
+
+
 // Wire up the callback urls (self referencing)
 webApp.WithEnvironment("CallBackUrl", webApp.GetEndpoint("https"));
 webAppF.WithEnvironment("CallBackUrl", webAppF.GetEndpoint("https"));
+webAppFn.WithEnvironment("CallBackUrl", webAppFn.GetEndpoint("https"));
 
 webhooksClient.WithEnvironment("CallBackUrl", webhooksClient.GetEndpoint("https"));
 
@@ -83,15 +96,8 @@ identityApi.WithEnvironment("BasketApiClient", basketApi.GetEndpoint("http"))
            .WithEnvironment("WebhooksWebClient", webhooksClient.GetEndpoint("https"))
            .WithEnvironment("WebAppClient", webApp.GetEndpoint("https"))
            .WithEnvironment("WebAppClientF", webAppF.GetEndpoint("https"))
+           .WithEnvironment("WebAppClientFn", webAppFn.GetEndpoint("https"))
            ;
 
-//var webapplication1 =  builder.AddProject<Projects.WebApplication1>("webapplication1")
-//    .WithReference(basketApi)
-//    .WithReference(catalogApi)
-//    .WithReference(orderingApi)
-//    .WithReference(rabbitMq)
-//    .WithEnvironment("IdentityUrl", identityApi.GetEndpoint("http"))
-//    .WithLaunchProfile("https");
-//webapplication1.WithEnvironment("CallBackUrl", webAppF.GetEndpoint("https"));
 
 builder.Build().Run();

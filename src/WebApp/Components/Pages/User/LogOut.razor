@@ -4,15 +4,3 @@
     This page only exists to create an endpoint that accepts the form post.
 *@
 
-@code {
-    [SupplyParameterFromQuery(Name = "chat")]
-    public bool ShowChat { get; set; }
-
-
-    protected override void OnInitialized()
-    {
-        ShowChat = false;
-    }
-
-}
-

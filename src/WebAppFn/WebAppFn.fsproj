@@ -1,0 +1,74 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="View\Pages\User\LogOut.fs" />
+    <Content Include="View\Components\Chatbot\Chatbot.fs.js" />
+    <None Include=".gitignore" />
+    <Compile Include="View\Components\Chatbot\MessageProcessor.fs" />
+    <Compile Include="View\Components\Chatbot\ChatState.fs" />
+    <Content Include="View\Components\Chatbot\Chatbot.fs.css" />
+    <Compile Include="View\Components\UserMenu.fs" />
+    <Content Include="View\Components\UserMenu.fs.css" />
+    <Compile Include="View\Components\Chatbot\Chatbot.fs" />
+    <Compile Include="View\Pages\User\OrdersRefreshOnStatusChange.fs" />
+    <Content Include="View\Pages\User\Orders.fs.css" />
+    <Compile Include="View\Pages\User\Orders.fs" />
+    <Content Include="View\Pages\Checkout\Checkout.fs.css" />
+    <Compile Include="View\Pages\Checkout\Checkout.fs" />
+    <Content Include="View\Components\Chatbot\ShowChatbotButton.fs.css" />
+    <Compile Include="View\Components\Chatbot\ShowChatbotButton.fs" />
+    <Content Include="View\Pages\Cart\Cart.fs.css" />
+    <Compile Include="View\Pages\Cart\Cart.fs" />
+    <Compile Include="View\Pages\User\LogIn.fs" />
+    <Content Include="View\Pages\Item\ItemPage.fs.css" />
+    <Compile Include="View\Pages\Item\ItemPage.fs" />
+    <Content Include="View\Pages\Catalog\Catalog.fs.css" />
+    <Compile Include="View\Pages\Catalog\Catalog.fs" />
+    <Content Include="View\Layout\CartMenu.fs.css" />
+    <Compile Include="View\Layout\CartMenu.fs" />
+    <Content Include="View\Layout\FooterBar.fs.css" />
+    <Compile Include="View\Layout\FooterBar.fs" />
+    <Content Include="View\Layout\HeaderBar.fs.css" />
+    <Compile Include="View\Layout\HeaderBar.fs" />
+    <Compile Include="View/Layout/MainLayout.fs" />
+    <Compile Include="View/Routes.fs" />
+    <Compile Include="View/App.fs" />
+    <Compile Include="Startup.fs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="Fun.Blazor.Microsoft.Authorization" />
+    <PackageReference Include="Fun.Blazor.Microsoft.Web" />
+    <PackageReference Include="Fun.Blazor" />
+    <PackageReference Include="Fun.Blazor.Server" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebAppShared\WebAppShared.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <FsJSFiles Include="./**/*.fs.js" Exclude="./wwwroot/**/*.*" />
+  </ItemGroup>
+  <Target Name="CopyFsJS" AfterTargets="Build">
+    <Copy SourceFiles="@(FsJSFiles)" DestinationFolder="./wwwroot/%(RecursiveDir)" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" />
+  </Target>
+  <ItemGroup>
+    <FsCssFiles Include="./**/*.fs.css" Exclude="./wwwroot/**/*.*" />
+  </ItemGroup>
+  <Target Name="CopyFsCss" AfterTargets="Build">
+    <Copy SourceFiles="@(FsCssFiles )" DestinationFolder="./wwwroot/%(RecursiveDir)" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" />
+  </Target>
+  <!--<Target Name="CopyFsJS" BeforeTargets="BeforePublish">
+
+
+        <ItemGroup>
+            <DistFiles Include="@(FsJSFiles)" />
+            <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+                <RelativePath>wwwroot/%(RecursiveDir)%(Filename)%(Extension)</RelativePath>
+                <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+                <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+            </ResolvedFileToPublish>
+        </ItemGroup>
+    </Target>-->
+</Project>
