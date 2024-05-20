@@ -67,7 +67,7 @@ let main args =
     |> ignore
 
 
-    app.MapForwarder ("/product-images/{id}", "http://catalog-api", "/api/v1/catalog/items/{id}/pic")
+    app.MapForwarder ("/product-images/{id}", "http://catalog-api", "/api/catalog/items/{id}/pic")
     |> ignore
 
     app.Run ()

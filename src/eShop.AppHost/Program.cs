@@ -116,8 +116,8 @@ var webAppF = builder.AddProject<Projects.WebAppF>("webappf")
     .WithReference(catalogApi)
     .WithReference(orderingApi)
     .WithReference(rabbitMq)
-    .WithEnvironment("IdentityUrl", identityApi.GetEndpoint("http"))
-    .WithLaunchProfile("https");
+    .WithEnvironment("IdentityUrl", identityEndpoint);
+
 
 
 var webAppFn = builder.AddProject<Projects.WebAppFn>("webappfn")
@@ -125,8 +125,8 @@ var webAppFn = builder.AddProject<Projects.WebAppFn>("webappfn")
     .WithReference(catalogApi)
     .WithReference(orderingApi)
     .WithReference(rabbitMq)
-    .WithEnvironment("IdentityUrl", identityApi.GetEndpoint("http"))
-    .WithLaunchProfile("https");
+    .WithEnvironment("IdentityUrl", identityEndpoint);
+
 
 
 // Wire up the callback urls (self referencing)

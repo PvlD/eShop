@@ -15,6 +15,7 @@ using Microsoft.SemanticKernel.TextGeneration;
 using eShop.WebApp.Services.OrderStatus.IntegrationEvents;
 using eShop.Basket.API.Grpc;
 
+
 public static class Extensions
 {
     public static void AddApplicationServices(this IHostApplicationBuilder builder, IAdapter adapter )
