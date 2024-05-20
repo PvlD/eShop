@@ -1,10 +1,11 @@
 ﻿using eShop.Catalog.API.Services;
+using Microsoft.SemanticKernel;
 
 public static class Extensions
 {
     public static void AddApplicationServices(this IHostApplicationBuilder builder)
     {
-        builder.AddNpgsqlDbContext<CatalogContext>("CatalogDB", configureDbContextOptions: dbContextOptionsBuilder =>
+        builder.AddNpgsqlDbContext<CatalogContext>("catalogdb", configureDbContextOptions: dbContextOptionsBuilder =>
         {
             dbContextOptionsBuilder.UseNpgsql(builder =>
             {
@@ -20,15 +21,23 @@ public static class Extensions
 
         builder.Services.AddTransient<ICatalogIntegrationEventService, CatalogIntegrationEventService>();
 
-        builder.AddRabbitMqEventBus("EventBus")
+        builder.AddRabbitMqEventBus("eventbus")
                .AddSubscription<OrderStatusChangedToAwaitingValidationIntegrationEvent, OrderStatusChangedToAwaitingValidationIntegrationEventHandler>()
                .AddSubscription<OrderStatusChangedToPaidIntegrationEvent, OrderStatusChangedToPaidIntegrationEventHandler>();
 
         builder.Services.AddOptions<CatalogOptions>()
             .BindConfiguration(nameof(CatalogOptions));
 
-        builder.Services.AddOptions<AIOptions>()
-            .BindConfiguration("AI");
+        if (builder.Configuration["AI:Onnx:EmbeddingModelPath"] is string modelPath &&
+            builder.Configuration["AI:Onnx:EmbeddingVocabPath"] is string vocabPath)
+        {
+            builder.Services.AddBertOnnxTextEmbeddingGeneration(modelPath, vocabPath);
+        }
+        else if (!string.IsNullOrWhiteSpace(builder.Configuration.GetConnectionString("openai")))
+        {
+            builder.AddAzureOpenAIClient("openai");
+            builder.Services.AddOpenAITextEmbeddingGeneration(builder.Configuration["AIOptions:OpenAI:EmbeddingName"] ?? "text-embedding-3-small");
+        }
 
         builder.Services.AddSingleton<ICatalogAI, CatalogAI>();
     }
